@@ -34,7 +34,6 @@
           while ($row = mysqli_fetch_array($result)) {
             echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
           }
-          echo getHandValue($conn, 'dealer');
         ?>
     </div>
     <div class="container-fluid fixed-bottom" id="personal">

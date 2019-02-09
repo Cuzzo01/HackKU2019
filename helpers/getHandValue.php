@@ -9,7 +9,6 @@
       $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
     }
     while ($row = mysqli_fetch_assoc($result)) {
-      echo "Sum is: " . $sum;
       if (getCardValue($row['card']) == 1) {
         $numAces ++;
         $sum += 11;
@@ -26,10 +25,7 @@
 
   function getCardValue($card) {
     $value = substr($card, -1);
-    echo $value;
-    die();
     if ($value == 'Q' || $value == 'K' || $value == 'J') {
-      echo "Found face card.";
       return 10;
     } else if ($value == 'A') {
       return 1;
