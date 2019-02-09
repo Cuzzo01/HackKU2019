@@ -12,6 +12,9 @@
     <title>Card Game</title>
 </head>
 <body>
+  <div class="container-fluid" id="gameCodeContainer">
+    Game Code: <span class="container" id="gameCode">ABCD</span>
+  </div>
   <div class = "container" id = "playerList">
     <table class="table table-dark">
       <?php

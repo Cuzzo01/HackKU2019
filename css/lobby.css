@@ -2,6 +2,11 @@ body {
   background-color: green;
   background-image: url("../CardCropped/pool_table.png");
 }
+#gameCodeContainer {
+  margin-bottom: 5px;
+  border: 2px solid black;
+  display: inline-block;
+}
 .nameLabel {
   display: inline-block;
   text-align: center;
