@@ -41,10 +41,8 @@
         <div class="container" id="funds"><?php
                                             $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
                                             $row = mysqli_fetch_array($result);
-                                            echo $row['coins'];
+                                            echo $row['coins'];?>
+        </div>
     </div>
-
-
-
 </body>
 </html>
