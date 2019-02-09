@@ -38,5 +38,6 @@ h3 {
   width: 35px;
 }
 body {
- background-image: url("../CardCropped/pool_table.png");
+  color: white;
+  background-image: url("../CardCropped/connectwork.png");
 }
