@@ -38,30 +38,38 @@
               ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               username VARCHAR(15) NOT NULL,
               coins int(32) NOT NULL DEFAULT '1000',
-              bet int(32) NOT NULL,
+              bet int(32) NOT NULL DEFAULT 0,
               reg_date TIMESTAMP
             )";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "CREATE TABLE unusedCards (
               ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               card VARCHAR(2) NOT NULL
             )";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "INSERT INTO unusedCards
                 (card)
             VALUES
-                ('2S'), ('3S'), ('4S'), ('5S'), ('6S'), ('7S'), ('8S'), ('9S'), ('1S'), ('JS'), ('QS'), ('KS'), ('AS'),
-                ('2C'), ('3C'), ('4C'), ('5C'), ('6C'), ('7C'), ('8C'), ('9C'), ('1C'), ('JC'), ('QC'), ('KC'), ('AC'),
-                ('2H'), ('3H'), ('4H'), ('5H'), ('6H'), ('7H'), ('8H'), ('9H'), ('1H'), ('JH'), ('QH'), ('KH'), ('AH'),
-                ('2D'), ('3D'), ('4D'), ('5D'), ('6D'), ('7D'), ('8D'), ('9D'), ('1D'), ('JD'), ('QD'), ('KD'), ('AD')
+                ('S2'), ('S3'), ('S4'), ('S5'), ('S6'), ('S7'), ('S8'), ('S9'), ('S1'), ('SJ'), ('SQ'), ('SK'), ('SA'),
+                ('C2'), ('C3'), ('C4'), ('C5'), ('C6'), ('C7'), ('C8'), ('C9'), ('C1'), ('CJ'), ('CQ'), ('CK'), ('CA'),
+                ('H2'), ('H3'), ('H4'), ('H5'), ('H6'), ('H7'), ('H8'), ('H9'), ('H1'), ('HJ'), ('HQ'), ('HK'), ('HA'),
+                ('D2'), ('D3'), ('D4'), ('D5'), ('D6'), ('D7'), ('D8'), ('D9'), ('D1'), ('DJ'), ('DQ'), ('DK'), ('DA')
                 ";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "CREATE TABLE dealerHand (
               ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               card VARCHAR(2) NOT NULL
             )";
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+  $query = "CREATE TABLE settings (
+              ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+              setting VARCHAR(20) NOT NULL,
+              value VARCHAR(20) NOT NULL
+            )";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
-  header("Location: ../joinMenu.html?gameCode=$gameCode");
+  $query = "INSERT INTO settings (setting,value) VALUES ('gameStarted', 'FALSE')";
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  header("Location: ../joinMenu.php?gameCode=$gameCode");
 
   $conn->close();
 ?>

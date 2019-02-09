@@ -20,7 +20,7 @@
     <form id="loginData">
       <input type="text" class="form-container-fluid" name="gameCode" id="codeInput">
       <h3 id = "pickName">What should we call you?</h3>
-      <input type="text" class="form-container-fluid" name="userName" id="nameInput">
+      <input type="text" class="form-container-fluid" name="username" id="nameInput">
     </form>
   </div>
 
