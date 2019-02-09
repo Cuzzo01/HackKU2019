@@ -15,5 +15,19 @@
   // while ($row = mysqli_fetch_assoc($result)) {
   //   deal($conn, $row['ID'], 2);
   // }
+?>
+<script>
+  let url = "ws://localhost:9000/server.php";
+  let ws = new WebSocket(url);
+  function startGame(){
+    let msg = {
+      name: nameInput,
+      message: "reload"
+    };
+    ws.send(JSON.stringify(msg))
+  }
+  startGame()
+</script>
+<?php
   header("Location: ../game.php");
  ?>

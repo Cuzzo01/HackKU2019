@@ -3,10 +3,11 @@
     $numAces = 0;
     $sum = 0;
     $result;
+    $playerHand = $playerID . "hand";
     if ($playerID == 'dealer') {
       $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
     } else {
-      $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
+      $result = mysqli_query($conn, "SELECT * FROM $playerHand") or die(mysqli_error($conn));
     }
     while ($row = mysqli_fetch_assoc($result)) {
       if (getCardValue($row['card']) == 1) {
@@ -29,6 +30,8 @@
       return 10;
     } else if ($value == 'A') {
       return 1;
+    } else if ($value == '1') {
+      return 10;
     } else {
       return $value;
     }

@@ -1,3 +1,12 @@
+<?php
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+  # UNCOMMENT WHEN IN PRODUCTION
+  // if (isset($_SESSION)) {
+  //   header("Location: ../lobby.php");
+  // }
+?>
 <!doctype html>
 <html lang="en">
 <head>
