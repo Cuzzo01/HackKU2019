@@ -30,17 +30,17 @@ while (true) {
 		$header = socket_read($socket_new, 1024); //read data sent by the socket
 		perform_handshaking($header, $socket_new, $host, $port); //perform websocket handshake
 
-		socket_getpeername($socket_new, $ip); //get ip address of connected socket
-		$response = mask(json_encode(array('type'=>'system', 'message'=>'UserAdded'))); //prepare json data
-    print_R($response);
-		send_message($response); //notify all users about new connection
+		//socket_getpeername($socket_new, $ip); //get ip address of connected socket
+		//$response = mask(json_encode(array('type'=>'system', 'message'=>'UserAdded'))); //prepare json data
+    //print_R($response);
+		//send_message($response); //notify all users about new connection
 
 		//make room for new socket
 		$found_socket = array_search($socket, $changed);
 		unset($changed[$found_socket]);
 	}
-}
-/*
+
+
 	//loop through all connected sockets
 	foreach ($changed as $changed_socket) {
 
@@ -48,14 +48,19 @@ while (true) {
 		while(socket_recv($changed_socket, $buf, 1024, 0) >= 1)
 		{
 			$received_text = unmask($buf); //unmask data
+
 			$tst_msg = json_decode($received_text, true); //json decode
 			$user_name = $tst_msg['name']; //sender name
 			$user_message = $tst_msg['message']; //message text
-			$user_color = $tst_msg['color']; //color
+
+			if($user_message == 'reload'){
+				print_R($user_message);
+				$response_text = mask(json_encode(array('type'=>'message', 'message'=>'reload')));
+				send_message($response_text); //send data
+			}
 
 			//prepare data to be sent to client
-			$response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message, 'color'=>$user_color)));
-			send_message($response_text); //send data
+
 			break 2; //exist this loop
 		}
 
@@ -67,12 +72,12 @@ while (true) {
 			unset($clients[$found_socket]);
 
 			//notify all users about disconnected connection
-			$response = mask(json_encode(array('type'=>'system', 'message'=>$ip.' disconnected')));
-			send_message($response);
+			//$response = mask(json_encode(array('type'=>'system', 'message'=>$ip.' disconnected')));
+			//send_message($response);
 		}
 	}
 }
-*/
+
 // close the listening socket
 socket_close($socket);
 function send_message($msg)

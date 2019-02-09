@@ -1,5 +1,9 @@
 let url = "ws://localhost:9000/server.php";
-let ws = new WebSocket(url)
+let ws = new WebSocket(url);
+ws.onmessage = function(e){
+  let msg = JSON.parse(e.data);
+  
+}
 function validateJoinInfo(){
   codeInput = document.getElementById('codeInput').value;
   console.log(codeInput);
@@ -13,6 +17,11 @@ function validateJoinInfo(){
       gameCodeInput.value = gameCodeInput.value.toUpperCase()
       form.method = 'post';
       form.action = '../helpers/joinLobby.php';
+      let msg = {
+        name: nameInput,
+        message: "reload"
+      };
+      ws.send(JSON.stringify(msg))
       form.submit();
       openSocket(nameInput, codeInput);
       redirect('../helpers/joinLobby.php', 'POST');
@@ -24,6 +33,9 @@ function validateJoinInfo(){
   else{
     error('The lobby string you entered is greater than 15 characters or empty, please try again.')
   }
+}
+function sendMsg(){
+
 }
 function readVariables(){
     let query = window.location.search.substring(1);
