@@ -19,12 +19,15 @@ h3 {
 #playerResources {
   margin-left: 10%;
   margin-right: 10%;
+  height: 17.5%;
 }
 #gameBtns {
+  height:6%;
   float: bottom;
   text-align: center;
 }
-#personal > * {
+#personal {
+  margin-left: 25%;
   text-align: center;
   display: inline-block;
   float: top;

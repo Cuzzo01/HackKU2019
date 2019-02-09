@@ -53,7 +53,7 @@
         ?>
     </div>
     <div class="container-fluid fixed-bottom" id="playerResources">
-      <div class="container-fluid" id="gameBtns">
+      <div class="container-fluid fixed-bottom" id="gameBtns">
         <?php
           $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
           $row = mysqli_fetch_array($result);
@@ -64,7 +64,7 @@
         ?>
 
       </div>
-      <div class="container-fluid" id="personal">
+      <div class="container" id="personal">
           <div class="container" id="funds"><?php
                                               $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
                                               $row = mysqli_fetch_array($result);

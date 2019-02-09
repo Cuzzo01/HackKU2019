@@ -1,12 +1,26 @@
 body {
-  padding-top: 200px;
+  padding-top: 5px;
   color: white;
   background-image: url("../CardCropped/connectwork.png");
+}
+#header {
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  text-align: center;
+  background-color: red;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+}
+#codeInput {
+  margin-bottom: 5px;
 }
 h3 {
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color: red;
+  background-color: darkgrey;
   text-align: center;
   border-radius: 10px;
   margin-left: 10%;
@@ -16,7 +30,6 @@ h3 {
   pading-top: 5px;
   padding-bottom: 5px;
   text-align: center;
-  border-color: red;
 }
 #joinBtn {
   padding-top: 10px;

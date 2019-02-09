@@ -2,7 +2,26 @@ body {
   color: white;
   background-image: url("../CardCropped/connectwork.png");
 }
-#betDiv {
+#header {
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
   text-align: center;
-  Margin-top: 5%;
+  background-color: red;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+}
+#betDiv {
+  background-color: darkgrey;
+  border-radius: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+#betInfo   {
+  text-align: center;
 }

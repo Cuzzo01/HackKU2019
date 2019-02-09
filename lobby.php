@@ -14,6 +14,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +27,9 @@
     <title>Card Game</title>
 </head>
 <body>
+  <div class="container-fluid" id="header">
+      CardSimulator
+  </div>
   <div class="container-fluid" id="gameCodeContainer">
     Game Code: <span class="container" id="gameCode"><?php echo $gameCode ?></span>
   </div>
@@ -43,6 +47,10 @@
         }
       ?>
     </table>
+  </div>
+  <div class = "container-fluid" id="waitMsgDiv">
+    <div class = "container-fluid" id="msg">Waiting for other players..</div>
+    <div class="loader"></div>
   </div>
   <div class = "container-fluid" id = "gameStart">
     <?php
