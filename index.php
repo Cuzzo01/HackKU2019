@@ -30,12 +30,12 @@
     </div>
 
     <div class = "container-fluid" id="createDiv">
-      <a href="helpers/createLobby.php"><button type="button" class="btn btn-primary" id="createGame">Create a Game</button></a>
+      <a href="helpers/createLobby.php"><button type="button" class="btn btn-primary" id="createBtn">Create a Game</button></a>
 
     </div>
 
     <div class = "container-fluid" id="joinDiv">
-      <a href="joinMenu.php"><button type="button" class="btn btn-primary" id="joinGame">Join a Game</button></a>
+      <a href="joinMenu.php"><button type="button" class="btn btn-primary" id="joinBtn">Join a Game</button></a>
     </div>
 
 </body>

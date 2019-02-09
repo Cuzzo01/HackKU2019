@@ -5,6 +5,7 @@ body {
 }
 #gameCodeContainer {
   margin-bottom: 5px;
+  margin-left: 10px;
   background-color: darkgrey;
   border-radius: 10px;
   padding:5px;

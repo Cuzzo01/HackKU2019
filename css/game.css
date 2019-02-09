@@ -21,13 +21,13 @@ h3 {
   margin-right: 10%;
 }
 #gameBtns {
-  float: top;
+  float: bottom;
   text-align: center;
 }
 #personal > * {
   text-align: center;
   display: inline-block;
-  float: left;
+  float: top;
 }
 .pile {
   padding:5px;
