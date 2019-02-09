@@ -1,5 +1,6 @@
 <?php
   include "deal.php";
+  include "dealerAI.php";
 
   function gameTick($conn) {
     $result = mysqli_query($conn, "SELECT * FROM users WHERE ready = 'FALSE'") or die(mysqli_error($conn));
@@ -24,8 +25,6 @@
         deal($conn, $row['ID'], 2);
       }
     } else if ($row['value'] == 'dealerPlays') {
-      echo "ready for dealer to play";
-      die();
       $result = mysqli_query($conn, "UPDATE settings SET value = 'revealResults' WHERE setting = 'nextGameStep'") or die(mysqli_error($conn));
 
     }
