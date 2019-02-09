@@ -1,3 +1,12 @@
+<?php
+  include 'helpers/mysqlLogin.php';
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+  $gameCode = $_SESSION['gameCode'];
+  $conn->select_db("game_$gameCode");
+  $username = $_SESSION['username']
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +29,11 @@
         <div class="container pile"><image class="card" src="../CardCropped/c2.png"><image class="card" src="../CardCropped/c6.png"></image></div>
     </div>
     <div class="container-fluid fixed-bottom" id="personal">
-        <div class="container" id="funds">200 Money</div>
+        <div class="container" id="funds"><?php
+                                            $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
+                                            $row = mysqli_fetch_array($result);
+                                            echo $row['coins'];
+                                              ?> coins</div>
         <div class="container pile"><image class="card" src="../CardCropped/d2.png"><image class="card" src="../CardCropped/h6.png"></image></div>
     </div>
 

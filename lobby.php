@@ -7,8 +7,6 @@
   $conn->select_db("game_$gameCode");
   $result = mysqli_query($conn, "SELECT * FROM settings WHERE setting = 'gameStarted'") or die(mysqli_error($conn));
   $row = mysqli_fetch_array($result);
-  // print_r($row['value'] != 'FALSE');
-  // die();
   if ($row['value'] != 'FALSE') {
     header("Location: ../game.php");
   }
