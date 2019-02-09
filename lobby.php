@@ -17,9 +17,19 @@
   </div>
   <div class = "container" id = "playerList">
     <table class="table table-dark">
-      <tr><td>exampleName</td></tr>
-      <tr><td>exampleName</td></tr>
-      <tr><td>exampleName</td></tr>
+      <?php
+        include 'helpers/mysqlLogin.php';
+        if (!isset($_SESSION)) {
+          session_start();
+        }
+        $gameCode = $_SESSION['gameCode'];
+        $conn->select_db("game_$gameCode");
+        $result = mysqli_query($conn, "SELECT * FROM users") or die(mysqli_error($conn));
+        while ($row = mysqli_fetch_array($result)) {
+          echo "<tr><td>" . $row['username'] . "</td></tr>";
+        }
+        $conn->close();
+      ?>
     </table>
   </div>
   <div class = "container-fluid" id = "gameStart">

@@ -6,12 +6,13 @@ function validateJoinInfo(){
 
   if(codeInput.length == 4){
     if(nameInput.length > 0 && nameInput.length <= 15){
-      var xhr = new XMLHttpRequest();
-      let data= new FormData();
-      data.append('gameCode',codeInput);
-      data.append('userName',nameInput);
-      xhr.open('POST','../helpers/joinLobby.php', false);
-      xhr.send(data)
+      let form = document.getElementById('loginData');
+      let gameCodeInput = document.getElementById('codeInput');
+      gameCodeInput.disabled = false;
+      form.method = 'post';
+      form.action = '../helpers/joinLobby.php';
+      form.submit();
+      redirect('../helpers/joinLobby.php', 'POST');
     }
     else{
       error('The name you entered is greater than 15 characters or empty, please try again.')

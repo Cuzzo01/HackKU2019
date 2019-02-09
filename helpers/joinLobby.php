@@ -1,7 +1,7 @@
 <?php
   include 'mysqlLogin.php';
 
-  $gameCode = $_GET["gameCode"];
+  $gameCode = $_POST["gameCode"];
   $conn->select_db("settings");
   $result = mysqli_query($conn, "SELECT * FROM gameCodes WHERE code = '$gameCode'");
   $count = mysqli_num_rows($result);
@@ -12,8 +12,8 @@
   if (!isset($_SESSION)) {
     session_start();
   }
-  $_SESSION['gameCode'] = $_GET["gameCode"];
-  $_SESSION['userName'] = $_GET["userName"];
+  $_SESSION['gameCode'] = $_POST["gameCode"];
+  $_SESSION['userName'] = $_POST["userName"];
   $gameCode = $_SESSION['gameCode'];
   $username = $_SESSION['userName'];
   $conn->select_db("game_$gameCode");
@@ -28,6 +28,6 @@
             )";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-  header("Location: ../lobby.html");
+  header("Location: ../lobby.php");
   $conn->close();
 ?>
