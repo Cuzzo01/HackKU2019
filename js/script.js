@@ -2,7 +2,7 @@ let url = "ws://localhost:9000/server.php";
 let ws = new WebSocket(url);
 ws.onmessage = function(e){
   let msg = JSON.parse(e.data);
-  
+
 }
 function validateJoinInfo(){
   codeInput = document.getElementById('codeInput').value;
@@ -21,9 +21,8 @@ function validateJoinInfo(){
         name: nameInput,
         message: "reload"
       };
-      ws.send(JSON.stringify(msg))
       form.submit();
-      openSocket(nameInput, codeInput);
+      ws.send(JSON.stringify(msg))
       redirect('../helpers/joinLobby.php', 'POST');
     }
     else{
