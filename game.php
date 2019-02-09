@@ -32,7 +32,7 @@
         <?php
           $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
           while ($row = mysqli_fetch_array($result)) {
-            echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
+            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
           }
         ?>
     </div>
@@ -47,7 +47,7 @@
           $tableName = $playerID . "hand";
           $result = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
           while ($row = mysqli_fetch_array($result)) {
-            echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
+            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
           }
           $conn->close();
         ?>
