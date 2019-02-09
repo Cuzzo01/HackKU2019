@@ -1,4 +1,5 @@
-
+let url = "ws://localhost:9000/server.php";
+let ws = new WebSocket(url)
 function validateJoinInfo(){
   codeInput = document.getElementById('codeInput').value;
   console.log(codeInput);
@@ -13,6 +14,7 @@ function validateJoinInfo(){
       form.method = 'post';
       form.action = '../helpers/joinLobby.php';
       form.submit();
+      openSocket(nameInput, codeInput);
       redirect('../helpers/joinLobby.php', 'POST');
     }
     else{
