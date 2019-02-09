@@ -47,9 +47,18 @@ function isHost(code){
     gameCodeInput.disabled = true;
 }
 function possibleBet(){
-  let amount = document.getElementById('betAmt').value;
-  let funds = document.getElementById('coins').value;
-  
+  let amount = document.getElementById('betInput').value;
+  let funds = document.getElementById('coins');
+  let form = document.getElementById('betInfo');
+  console.log(amount);
+  console.log(funds.textContent );
+  if(amount <= funds){
+    form.method = 'post';
+    form.action = '../helpers/setBet.php';
+    form.submit();
+    redirect('../helpers/setBet.php', 'POST');
+  }
+
 }
 function error(message){
   console.log(message);
