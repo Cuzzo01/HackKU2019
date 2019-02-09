@@ -1,3 +1,10 @@
+<?php
+  include 'helpers/mysqlLogin.php';
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+  $gameCode = $_SESSION['gameCode'];
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,16 +20,11 @@
 </head>
 <body>
   <div class="container-fluid" id="gameCodeContainer">
-    Game Code: <span class="container" id="gameCode">ABCD</span>
+    Game Code: <span class="container" id="gameCode"><?php echo $gameCode ?></span>
   </div>
   <div class = "container" id = "playerList">
     <table class="table table-dark">
       <?php
-        include 'helpers/mysqlLogin.php';
-        if (!isset($_SESSION)) {
-          session_start();
-        }
-        $gameCode = $_SESSION['gameCode'];
         $conn->select_db("game_$gameCode");
         $result = mysqli_query($conn, "SELECT * FROM users") or die(mysqli_error($conn));
         while ($row = mysqli_fetch_array($result)) {
