@@ -36,10 +36,10 @@
       ?>
       </span>
     </label>
-    <form id="betInfo">
-      <input type="text" class="form-container-fluid" name="bet" id="betInput">
-      <button type = "button" class="btn btn-primary" id-"submitBtn" onclick="possibleBet()">Submit</button>
-    </form>
   </div>
+  <form id="betInfo">
+    <input type="text" class="form-container-fluid" name="bet" id="betInput">
+    <button type = "button" class="btn btn-primary" id-"submitBtn" onclick="possibleBet()">Submit</button>
+  </form>
 
 </body>

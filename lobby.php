@@ -48,6 +48,10 @@
       ?>
     </table>
   </div>
+  <div class = "container-fluid" id="waitMsgDiv">
+    <div class = "container-fluid" id="msg">Waiting for other players..</div>
+    <div class="loader"></div>
+  </div>
   <div class = "container-fluid" id = "gameStart">
     <?php
       $username = $_SESSION['username'];
