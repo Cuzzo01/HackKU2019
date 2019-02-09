@@ -1,5 +1,6 @@
 body {
- background-image: url("paper.gif");
+  background-color: green;
+  background-image: url("../CardCropped/pool_table.png");
 }
 .nameLabel {
   display: inline-block;
