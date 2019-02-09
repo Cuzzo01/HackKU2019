@@ -61,7 +61,7 @@
               card VARCHAR(2) NOT NULL
             )";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
-  //header("Location: joinLobby.php?code=$gameCode");
+  header("Location: ../joinMenu.html?gameCode=$gameCode");
 
   $conn->close();
 ?>
