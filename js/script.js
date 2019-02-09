@@ -9,6 +9,7 @@ function validateJoinInfo(){
       let form = document.getElementById('loginData');
       let gameCodeInput = document.getElementById('codeInput');
       gameCodeInput.disabled = false;
+      gameCodeInput.value = gameCodeInput.value.toUpperCase()
       form.method = 'post';
       form.action = '../helpers/joinLobby.php';
       form.submit();
