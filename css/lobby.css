@@ -1,6 +1,7 @@
 body {
-  background-color: green;
-  background-image: url("../CardCropped/pool_table.png");
+  padding-top: 150px;
+  color: white;
+  background-image: url("../CardCropped/connectwork.png");
 }
 #gameCodeContainer {
   margin-bottom: 5px;

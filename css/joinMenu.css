@@ -1,9 +1,12 @@
 body {
- background-image: url("../CardCropped/pool_table.png");
+  padding-top: 200px;
+  color: white;
+  background-image: url("../CardCropped/connectwork.png");
 }
 #joinCode {
   text-align: center;
 }
 #joinBtn {
+  padding-top: 10px;
   text-align:center;
 }
