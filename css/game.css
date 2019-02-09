@@ -16,9 +16,6 @@ h3 {
 #menu {
   float:right;
 }
-#personal {
-  float:
-}
 #personal > * {
   display: inline-block;
 }
@@ -41,6 +38,9 @@ body {
   color: white;
   background-image: url("../CardCropped/connectwork.png");
 }
-#person > button {
-  float: right;
+#personal > button {
+  float: top;
+}
+#funds {
+  float: bottom;
 }
