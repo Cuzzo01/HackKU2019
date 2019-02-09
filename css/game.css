@@ -1,6 +1,31 @@
 #header {
-  text-align: center;
+  display: inline;
 }
-#intro {
-  text-align: center;
+h3 {
+  display: inline-block;
+}
+#board > * {
+  display: inline;
+}
+#menu {
+  float:right;
+}
+#personal {
+  float:
+}
+#personal > * {
+  display: inline-block;
+}
+.pile {
+  display: inline-block;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  min-width: 150px;
+}
+.card {
+  border-top: 2px inset #0275d8;
+  border-left: 2px inset #0275d8;
+  margin-right: -7.5%;
+  display: inline-block;
+  width: 35px;
 }
