@@ -7,6 +7,8 @@ function validateJoinInfo(){
   if(codeInput.length == 4){
     if(nameInput.length > 0 && nameInput.length <= 15){
       let form = document.getElementById('loginData');
+      let gameCodeInput = document.getElementById('codeInput');
+      gameCodeInput.disabled = false;
       form.method = 'post';
       form.action = '../helpers/joinLobby.php';
       form.submit();
