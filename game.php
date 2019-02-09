@@ -8,6 +8,13 @@
   $conn->select_db("game_$gameCode");
   $username = $_SESSION['username'];
   $playerID = $_SESSION['playerID'];
+  $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
+  $row = mysqli_fetch_array($result);
+  if (!$row['ready']) {
+    if ($row['nextAction'] == 'bet') {
+      header("Location: bet.php");
+    }
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,6 +22,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="refresh" content="5" >
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
