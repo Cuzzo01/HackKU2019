@@ -3,8 +3,20 @@ body {
   color: white;
   background-image: url("../CardCropped/connectwork.png");
 }
-#joinCode {
+h3 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: red;
   text-align: center;
+  border-radius: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#joinCode {
+  pading-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-color: red;
 }
 #joinBtn {
   padding-top: 10px;

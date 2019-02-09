@@ -4,9 +4,40 @@ body {
 }
 #header {
   font-family: 'Lobster', cursive;
-  padding-top: 200px;
+  font-size: 50px;
   text-align: center;
+  background-color: red;
+  border-radius: 10px;
+  margin-top: 180px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
 }
-#intro {
+#createDiv {
   text-align: center;
+  display: block;
+  min-height: 120px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 5%;
+}
+#createBtn {
+  min-height: 120px;
+  font-size: 30px;
+  width: 100%;
+  height: 100%;
+}
+#joinDiv {
+  text-align: center;
+  display: block;
+  min-height: 120px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 5%;
+}
+#joinBtn {
+  min-height: 120px;
+  font-size: 30px;
+  width: 100%;
+  height: 100%;
 }

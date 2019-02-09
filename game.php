@@ -37,6 +37,8 @@
         ?>
     </div>
     <div class="container-fluid fixed-bottom" id="personal">
+      <button type="button" class="btn btn-primary" id="hitBtn">Hit</button>
+      <button type="button" class="btn btn-primary" id="stayBtn">Stay</button>
         <div class="container" id="funds"><?php
                                             $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
                                             $row = mysqli_fetch_array($result);
@@ -53,7 +55,5 @@
         ?>
       </image></div>
     </div>
-
-
 </body>
 </html>
