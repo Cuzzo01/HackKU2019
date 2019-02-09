@@ -1,5 +1,6 @@
 <?php
   include 'mysqlLogin.php';
+  include 'getHandValue.php';
   if (!isset($_SESSION)) {
     session_start();
   }
@@ -13,6 +14,10 @@
     header("Location: ../game.php");
   } else {
     deal($conn, $row['ID'], 1);
-    header("Location: ../game.php");
+    if (getHandValue($conn, $row['ID']) >= 21) {
+      header("Location: stay.php");
+    } else {
+      header("Location: ../game.php");
+    }
   }
 ?>

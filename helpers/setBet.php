@@ -15,7 +15,7 @@
     $result = mysqli_query($conn, "UPDATE users SET bet = '$betAmount' WHERE username = '$username';") or die(mysqli_error($conn));
     $newCoins = $row['coins'] - $betAmount;
     $result = mysqli_query($conn, "UPDATE users SET coins = '$newCoins' WHERE username = '$username';") or die(mysqli_error($conn));
-    $result = mysqli_query($conn, "UPDATE users SET ready = TRUE;") or die(mysqli_error($conn));
+    $result = mysqli_query($conn, "UPDATE users SET ready = TRUE WHERE username = '$username'") or die(mysqli_error($conn));
     header("Location: ../game.php");
   }
 ?>

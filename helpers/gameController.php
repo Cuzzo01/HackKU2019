@@ -24,8 +24,10 @@
         deal($conn, $row['ID'], 2);
       }
     } else if ($row['value'] == 'dealerPlays') {
+      echo "ready for dealer to play";
+      die();
       $result = mysqli_query($conn, "UPDATE settings SET value = 'revealResults' WHERE setting = 'nextGameStep'") or die(mysqli_error($conn));
-      // have dealer play
+
     }
   }
 ?>

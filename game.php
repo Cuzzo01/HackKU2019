@@ -77,6 +77,7 @@
             while ($row = mysqli_fetch_array($result)) {
               echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
             }
+            echo getHandValue($conn, $playerID);
             $conn->close();
           ?>
         </image></div>

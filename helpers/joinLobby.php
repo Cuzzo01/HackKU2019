@@ -1,21 +1,41 @@
 <?php
   include 'mysqlLogin.php';
 
-  $gameCode = $_POST["gameCode"];
+  $gameCode = $_POST['gameCode'];
+  $username = $_POST['username'];
+
   $conn->select_db("settings");
   $result = mysqli_query($conn, "SELECT * FROM gameCodes WHERE code = '$gameCode'");
   $count = mysqli_num_rows($result);
   if ($count == 0) {
-    header("Location: ../join.html?err=1");
+    header("Location: ../join.php?err=1");
   }
+
+  $conn->select_db("game_$gameCode");
+
+  $newName = $username;
+  while (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE username = '$newName'")) > 0) {
+    $numToAdd = 2;
+    $newName = $username . $numToAdd;
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$newName'");
+    $count = mysqli_num_rows($result);
+    if ($count != 0) {
+      echo "conflict found";
+      $numToAdd ++;
+    } else {
+      echo "no conlict";
+      break;
+    }
+  }
+  $username = $username . " " . $numToAdd;
 
   if (!isset($_SESSION)) {
     session_start();
   }
-  $_SESSION['gameCode'] = $_POST["gameCode"];
-  $_SESSION['username'] = $_POST["username"];
-  $gameCode = $_SESSION['gameCode'];
-  $username = $_SESSION['username'];
+
+  $_SESSION['gameCode'] = $gameCode;
+  $_SESSION['username'] = $username;
+
   $conn->select_db("game_$gameCode");
 
   $query = "INSERT INTO users (username) VALUES ('$username')";
