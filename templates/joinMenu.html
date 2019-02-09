@@ -17,9 +17,11 @@
 <body onload="readVariables()">
   <div class = "container-fluid" id="joinCode">
     <h3 id="enterCode">Enter Join Code</h3>
-    <input type="text" class="form-container-fluid" id="codeInput">
-    <h3 id = "pickName">What should we call you?</h3>
-    <input type="text" class="form-container-fluid" id="nameInput">
+    <form id="loginData">
+      <input type="text" class="form-container-fluid" name="gameCode" id="codeInput">
+      <h3 id = "pickName">What should we call you?</h3>
+      <input type="text" class="form-container-fluid" name="userName" id="nameInput">
+    </form>
   </div>
 
   <div class = "container-fluid" id="joinBtn">
