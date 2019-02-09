@@ -9,6 +9,7 @@ function validateJoinInfo(){
       let form = document.getElementById('loginData');
       let gameCodeInput = document.getElementById('codeInput');
       gameCodeInput.disabled = false;
+      gameCodeInput.value = gameCodeInput.value.toUpperCase()
       form.method = 'post';
       form.action = '../helpers/joinLobby.php';
       form.submit();
@@ -45,7 +46,11 @@ function isHost(code){
     gameCodeInput.value = code;
     gameCodeInput.disabled = true;
 }
-
+function possibleBet(){
+  let amount = document.getElementById('betAmt').value;
+  let funds = document.getElementById('coins').value;
+  
+}
 function error(message){
   console.log(message);
 }
