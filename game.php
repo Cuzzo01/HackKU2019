@@ -1,5 +1,6 @@
 <?php
   include 'helpers/mysqlLogin.php';
+  include 'helpers/getHandValue.php';
   if (!isset($_SESSION)) {
     session_start();
   }
@@ -33,6 +34,7 @@
           while ($row = mysqli_fetch_array($result)) {
             echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
           }
+          echo getHandValue($conn, 'dealer');
         ?>
     </div>
     <div class="container-fluid fixed-bottom" id="personal">
@@ -48,6 +50,7 @@
           while ($row = mysqli_fetch_array($result)) {
             echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
           }
+          $conn->close();
         ?>
       </image></div>
     </div>
