@@ -10,6 +10,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,15 +26,16 @@
 </head>
 <body>
     <div class="container-fluid" id="header">
-        <h3 id="name">CardSimulator</h3>
+        CardSimulator
     </div>
 
-    <div class = "container-fluid" id="intro">
-        <h3 id="intromsg">What would you like to do?</h3>
-        <a href="helpers/createLobby.php"><button type="button" class="btn btn-primary" id="createGame">Create a Game</button></a>
-        <a href="joinMenu.php"><button type="button" class="btn btn-primary" id="joinGame">Join a Game</button></a>
+    <div class = "container-fluid" id="createDiv">
+        <button type="button" class="btn btn-primary" id="createBtn">Create a Game</button>
     </div>
 
+    <div class = "container-fluid" id="joinDiv">
+      <button type="button" class="btn btn-primary" id="joinBtn">Join a Game</button>
+    </div>
 
 </body>
 </html>
