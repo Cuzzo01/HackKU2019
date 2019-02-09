@@ -1,0 +1,15 @@
+body {
+ background-image: url("paper.gif");
+}
+.nameLabel {
+  display: inline-block;
+  text-align: center;
+  border: 2px solid black;
+}
+.playerList {
+  display: flex;
+  align-content: center;
+}
+#gameStart {
+  text-align: center;
+}
