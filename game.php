@@ -1,5 +1,6 @@
 <?php
   include 'helpers/mysqlLogin.php';
+  include 'helpers/getHandValue.php';
   if (!isset($_SESSION)) {
     session_start();
   }
@@ -33,6 +34,7 @@
           while ($row = mysqli_fetch_array($result)) {
             echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
           }
+          echo getHandValue($conn, 'dealer');
         ?>
     </div>
     <div class="container-fluid fixed-bottom" id="personal">
@@ -41,8 +43,18 @@
         <div class="container" id="funds"><?php
                                             $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
                                             $row = mysqli_fetch_array($result);
-                                            echo $row['coins'];?>
-        </div>
+                                            echo $row['coins'];
+                                              ?> coins</div>
+        <div class="container pile">
+          <?php
+          $tableName = $playerID . "hand";
+          $result = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<image class='card' src='../CardCropped/" . $row['card'] . ".png'>";
+          }
+          $conn->close();
+        ?>
+      </image></div>
     </div>
 </body>
 </html>
