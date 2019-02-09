@@ -41,12 +41,12 @@
               bet int(32) NOT NULL DEFAULT 0,
               reg_date TIMESTAMP
             )";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "CREATE TABLE unusedCards (
               ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               card VARCHAR(2) NOT NULL
             )";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "INSERT INTO unusedCards
                 (card)
             VALUES
@@ -55,13 +55,21 @@
                 ('2H'), ('3H'), ('4H'), ('5H'), ('6H'), ('7H'), ('8H'), ('9H'), ('1H'), ('JH'), ('QH'), ('KH'), ('AH'),
                 ('2D'), ('3D'), ('4D'), ('5D'), ('6D'), ('7D'), ('8D'), ('9D'), ('1D'), ('JD'), ('QD'), ('KD'), ('AD')
                 ";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "CREATE TABLE dealerHand (
               ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               card VARCHAR(2) NOT NULL
             )";
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+  $query = "CREATE TABLE settings (
+              ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+              setting VARCHAR(20) NOT NULL,
+              value VARCHAR(20) NOT NULL
+            )";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
-  header("Location: ../joinMenu.html?gameCode=$gameCode");
+  $query = "INSERT INTO settings (setting,value) VALUES ('gameStarted', 'FALSE')";
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  header("Location: ../joinMenu.php?gameCode=$gameCode");
 
   $conn->close();
 ?>

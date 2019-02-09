@@ -4,6 +4,14 @@
     session_start();
   }
   $gameCode = $_SESSION['gameCode'];
+  $conn->select_db("game_$gameCode");
+  $result = mysqli_query($conn, "SELECT * FROM settings WHERE setting = 'gameStarted'") or die(mysqli_error($conn));
+  $row = mysqli_fetch_array($result);
+  // print_r($row['value'] != 'FALSE');
+  // die();
+  if ($row['value'] != 'FALSE') {
+    header("Location: ../game.php");
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,13 +37,24 @@
         $conn->select_db("game_$gameCode");
         $result = mysqli_query($conn, "SELECT * FROM users") or die(mysqli_error($conn));
         while ($row = mysqli_fetch_array($result)) {
-          echo "<tr><td>" . $row['username'] . "</td></tr>";
+          if ($row['username'] == $_SESSION['username']) {
+            echo "<tr><td><b>" . $row['username'] . "</b></td></tr>";
+          } else {
+            echo "<tr><td>" . $row['username'] . "</td></tr>";
+          }
         }
-        $conn->close();
       ?>
     </table>
   </div>
   <div class = "container-fluid" id = "gameStart">
-    <button type="button" class="btn btn-primary" id="gameStart">Start Game</button>
+    <?php
+      $username = $_SESSION['username'];
+      $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
+      $row = mysqli_fetch_array($result);
+      if ($row['ID'] == 1) {
+        echo "<a href='helpers/startGame.php'><button type='button' class='btn btn-primary' id='gameStart'>Start Game</button></a>";
+      }
+      $conn->close();
+    ?>
   </div>
 </body>

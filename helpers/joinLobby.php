@@ -13,9 +13,9 @@
     session_start();
   }
   $_SESSION['gameCode'] = $_POST["gameCode"];
-  $_SESSION['userName'] = $_POST["userName"];
+  $_SESSION['username'] = $_POST["username"];
   $gameCode = $_SESSION['gameCode'];
-  $username = $_SESSION['userName'];
+  $username = $_SESSION['username'];
   $conn->select_db("game_$gameCode");
 
   $query = "INSERT INTO users (username) VALUES ('$username')";

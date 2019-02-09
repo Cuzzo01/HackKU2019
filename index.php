@@ -1,3 +1,12 @@
+<?php
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+  # UNCOMMENT WHEN IN PRODUCTION
+  // if (isset($_SESSION)) {
+  //   header("Location: ../lobby.php");
+  // }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,7 +31,7 @@
     <div class = "container-fluid" id="intro">
         <h3 id="intromsg">What would you like to do?</h3>
         <a href="helpers/createLobby.php"><button type="button" class="btn btn-primary" id="createGame">Create a Game</button></a>
-        <a href="joinMenu.html"><button type="button" class="btn btn-primary" id="joinGame">Join a Game</button></a>
+        <a href="joinMenu.php"><button type="button" class="btn btn-primary" id="joinGame">Join a Game</button></a>
     </div>
 
 
