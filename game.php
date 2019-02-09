@@ -1,11 +1,13 @@
 <?php
   include 'helpers/mysqlLogin.php';
-  include 'helpers/getHandValue.php';
   if (!isset($_SESSION)) {
     session_start();
   }
   $gameCode = $_SESSION['gameCode'];
   $conn->select_db("game_$gameCode");
+  include 'helpers/getHandValue.php';
+  include 'helpers/gameController.php';
+  gameTick($conn);
   $username = $_SESSION['username'];
   $playerID = $_SESSION['playerID'];
   $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
@@ -13,6 +15,9 @@
   if (!$row['ready']) {
     if ($row['nextAction'] == 'bet') {
       header("Location: bet.php");
+    }
+    if ($row['nextAction'] == 'userPlays') {
+
     }
   }
 ?>
@@ -36,7 +41,7 @@
         <button type="button" class="btn btn-primary" id="menu">Menu</button>
     </div>
     <div class="container-fluid" id="otherPlayers">
-      
+
     </div>
     <div class="container-fluid" id="board">
         <div class="container pile">
