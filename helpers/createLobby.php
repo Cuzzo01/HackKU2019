@@ -39,6 +39,8 @@
               username VARCHAR(15) NOT NULL,
               coins int(32) NOT NULL DEFAULT '1000',
               bet int(32) NOT NULL DEFAULT 0,
+              ready boolean NOT NULL DEFAULT 0,
+              nextAction VARCHAR(32) NOT NULL,
               reg_date TIMESTAMP
             )";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -66,9 +68,11 @@
               setting VARCHAR(20) NOT NULL,
               value VARCHAR(20) NOT NULL
             )";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $query = "INSERT INTO settings (setting,value) VALUES ('gameStarted', 'FALSE')";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));;
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+  $query = "INSERT INTO settings (setting) VALUES ('nextGameStep')";
+  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   header("Location: ../joinMenu.php?gameCode=$gameCode");
 
   $conn->close();
