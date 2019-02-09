@@ -10,6 +10,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +24,9 @@
     <title>Card Game</title>
 </head>
 <body>
+  <div class="container-fluid" id="header">
+      CardSimulator
+  </div>
   <div class = "container-fluid" id="betDiv">
     <h3 id="enterBet">Enter Bet amount</h3>
     <label for="coins">Coins Available:<span id="coins"><?php

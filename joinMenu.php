@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,11 +16,14 @@
     <title>Card Game</title>
 </head>
 <body onload="readVariables()">
+  <div class="container-fluid" id="header">
+      CardSimulator
+  </div>
   <div class = "container-fluid" id="joinCode">
     <h3 id="enterCode">Enter Join Code</h3>
     <form id="loginData">
       <input type="text" class="form-container-fluid" name="gameCode" id="codeInput">
-      <h3 id = "pickName">What should we call you?</h3>
+      <h3 id = "pickName">Name</h3>
       <input type="text" class="form-container-fluid" name="username" id="nameInput">
     </form>
   </div>
