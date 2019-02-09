@@ -1,3 +1,6 @@
+body {
+ background-image: url("../CardCropped/pool_table.png");
+}
 #joinCode {
   text-align: center;
 }
