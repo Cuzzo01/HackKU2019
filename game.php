@@ -29,13 +29,17 @@
         <div class="container pile"><image class="card" src="../CardCropped/c2.png"><image class="card" src="../CardCropped/c6.png"></image></div>
     </div>
     <div class="container-fluid fixed-bottom" id="personal">
+      <button type="button" class="btn btn-primary" id="hitBtn">Hit</button>
+      <button type="button" class="btn btn-primary" id="stayBtn">Stay</button>
         <div class="container" id="funds"><?php
                                             $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
                                             $row = mysqli_fetch_array($result);
                                             echo $row['coins'];
-                                              ?> coins</div>
+                                              ?> coins
+            </div>
         <div class="container pile"><image class="card" src="../CardCropped/d2.png"><image class="card" src="../CardCropped/h6.png"></image></div>
     </div>
+
 
 
 </body>

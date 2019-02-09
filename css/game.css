@@ -41,3 +41,6 @@ body {
   color: white;
   background-image: url("../CardCropped/connectwork.png");
 }
+#person > button {
+  float: right;
+}
