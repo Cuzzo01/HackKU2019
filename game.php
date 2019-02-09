@@ -27,7 +27,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="refresh" content="5" >
+    <!-- <meta http-equiv="refresh" content="5" > -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -54,8 +54,15 @@
     </div>
     <div class="container-fluid fixed-bottom" id="playerResources">
       <div class="container-fluid" id="gameBtns">
-        <button type="button" class="btn btn-primary" id="hitBtn">Hit</button>
-        <button type="button" class="btn btn-primary" id="stayBtn">Stay</button>
+        <?php
+          $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
+          $row = mysqli_fetch_array($result);
+          if ($row['ready'] == FALSE && $row['nextAction'] == 'userplay') {
+            echo "<a href='helpers/hit.php'><button type='button' class='btn btn-primary' id='hitBtn'>Hit</button></a>";
+            echo "<a href='helpers/stay.php'><button type='button' class='btn btn-primary' id='stayBtn'>Stay</button></a>";
+          }
+        ?>
+
       </div>
       <div class="container-fluid" id="personal">
           <div class="container" id="funds"><?php
