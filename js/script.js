@@ -1,10 +1,11 @@
 
 function validateJoinInfo(){
   codeInput = document.getElementById('codeInput').value;
+  console.log(codeInput);
   nameInput = document.getElementById('nameInput').value;
 
-  if(codeInput.length > 0 && codeInput <= 15){
-    if(nameInput.length > 0 && nameInput <= 15){
+  if(codeInput.length == 4){
+    if(nameInput.length > 0 && nameInput.length <= 15){
       var xhr = new XMLHttpRequest();
       let data= new FormData();
       data.append('gameCode',codeInput);
