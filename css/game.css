@@ -16,8 +16,18 @@ h3 {
 #menu {
   float:right;
 }
+#playerResources {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#gameBtns {
+  float: top;
+  text-align: center;
+}
 #personal > * {
+  text-align: center;
   display: inline-block;
+  float: left;
 }
 .pile {
   padding:5px;
@@ -37,10 +47,4 @@ h3 {
 body {
   color: white;
   background-image: url("../CardCropped/connectwork.png");
-}
-#personal > button {
-  float: top;
-}
-#funds {
-  float: bottom;
 }

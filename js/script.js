@@ -46,7 +46,11 @@ function isHost(code){
     gameCodeInput.value = code;
     gameCodeInput.disabled = true;
 }
-
+function possibleBet(){
+  let amount = document.getElementById('betAmt').value;
+  let funds = document.getElementById('coins').value;
+  
+}
 function error(message){
   console.log(message);
 }

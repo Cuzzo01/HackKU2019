@@ -32,7 +32,7 @@
     </label>
     <form id="betInfo">
       <input type="text" class="form-container-fluid" name="betAmt" id="betInput">
-      <button type = "button" class="btn btn-primary" id-"submitBtn">Submit</button>
+      <button type = "button" class="btn btn-primary" id-"submitBtn" onclick="possibleBet()">Submit</button>
     </form>
   </div>
 
