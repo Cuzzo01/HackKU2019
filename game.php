@@ -66,9 +66,18 @@
       </label>
         <div class="container pile pile2">
         <?php
+          $result = mysqli_query($conn, "SELECT * FROM settings WHERE setting = 'nextGameStep'") or die(mysqli_error($conn));
+          $row = mysqli_fetch_array($result);
+          $hideCard = !($row['value'] == 'revealResults' || $row['value'] == 'resetCardsAndGame');
           $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
+          $first = TRUE;
           while ($row = mysqli_fetch_array($result)) {
-            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+            if ($first && $hideCard) {
+              $first = FALSE;
+              echo "<image class='card' src='../CardCropped/hidden.png'>";
+            } else {
+              echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+            }
           }
         ?>
       </div>
