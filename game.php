@@ -16,7 +16,7 @@
     if ($row['nextAction'] == 'bet') {
       header("Location: bet.php");
     }
-    if ($row['nextAction'] == 'userPlays') {
+    if ($row['nextAction'] == 'userPlay') {
 
     }
   }
@@ -27,7 +27,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta http-equiv="refresh" content="5" > -->
+    <meta http-equiv="refresh" content="5" >
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -37,29 +37,53 @@
 </head>
 <body>
     <div class="container-fluid" id="header">
-        <h3 id="name">Name</h3>
+        <h3 id="name"><?php echo $username ?></h3>
         <button type="button" class="btn btn-primary" id="menu">Menu</button>
     </div>
     <div class="container-fluid" id="otherPlayers">
-
-    </div>
+      <?php
+        $conn->select_db("game_$gameCode");
+        $result = mysqli_query($conn, "SELECT * FROM users") or die(mysqli_error($conn));
+        while ($row = mysqli_fetch_array($result)) {
+          if ($row['username'] == $_SESSION['username']) {
+            continue;
+          } else {
+            echo "<div class='container-fluid player'><label class='container-fluid' id='playerName'>";
+            echo $row['username'];
+            echo "</label><div class='container pile pile3'>";
+            $tableName = $row['ID'] . 'hand';
+            $result2 = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
+            while ($row = mysqli_fetch_array($result2)) {
+              echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+            }
+            echo "</div></div>";
+          }
+        }
+      ?>
     <div class="container-fluid" id="board">
-        <div class="container pile">
+      <label class="container-fluid" id="playerName">
+        Board/Dealer
+      </label>
+        <div class="container pile pile2">
         <?php
           $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
           while ($row = mysqli_fetch_array($result)) {
             echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
           }
         ?>
+      </div>
     </div>
     <div class="container-fluid fixed-bottom" id="playerResources">
       <div class="container-fluid fixed-bottom" id="gameBtns">
         <?php
           $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
           $row = mysqli_fetch_array($result);
-          if ($row['ready'] == FALSE && $row['nextAction'] == 'userplay') {
+          if ($row['ready'] == FALSE && $row['nextAction'] == 'userPlay') {
             echo "<a href='helpers/hit.php'><button type='button' class='btn btn-primary' id='hitBtn'>Hit</button></a>";
             echo "<a href='helpers/stay.php'><button type='button' class='btn btn-primary' id='stayBtn'>Stay</button></a>";
+          }
+          if ($row['ready'] == FALSE && $row['nextAction'] == 'resetCardsAndGame') {
+            echo "<a href='helpers/ready.php'><button type='button' class='btn btn-primary' id='nextBtn'>Next Hand</button></a>";
           }
         ?>
 
@@ -70,14 +94,13 @@
                                               $row = mysqli_fetch_array($result);
                                               echo $row['coins'];
                                                 ?> coins</div>
-          <div class="container pile">
+          <div class="container pile pile2">
             <?php
             $tableName = $playerID . "hand";
             $result = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
             while ($row = mysqli_fetch_array($result)) {
               echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
             }
-            echo getHandValue($conn, $playerID);
             $conn->close();
           ?>
         </image></div>

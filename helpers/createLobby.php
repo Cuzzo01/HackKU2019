@@ -25,7 +25,6 @@
 
   $gameCode = "RUBH";
   while(!isValidNewGameCode($gameCode, $conn)) {
-    echo "Gamecode already used";
     $gameCode = randomString(4);
   }
 
