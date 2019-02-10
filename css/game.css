@@ -1,5 +1,8 @@
 #header {
-  display: inline;
+  display: block;
+  height: 40px;
+  margin: 5px;
+  padding: 0px;
 }
 h3 {
   display: inline-block;
@@ -8,91 +11,103 @@ h3 {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   min-height: 200px;
-  padding:5px;
+  padding:0px;
 }
-#board > * {
-  display: inline-block;
-}
+
 #menu {
-  margin-top: 5px;
-  margin-right: 5px;
   float:right;
 }
 #playerInfo {
+  margin: 5px;
+  padding: 0;
   float: right;
   background-color: darkgrey;
   border-radius: 5px;
-  width: 100px;
+  width: 125px;
 }
 #playerInfo > * {
-  padding-left: 0px;
+  margin: 0;
+  padding: 0;
+  display:block;
 }
 #otherPlayers {
-  margin-top: 10px;
+  margin: 0;
+  padding: 0;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   min-height: 100px;
 }
-#playerName {
-  float: left;
+.playerName {
+  position:relative;
+  margin: 5px;
+  padding: 3px;
   background-color: darkgrey;
   border-radius: 5px;
 }
+#statusDiv {
+  margin:0;
+  padding:0;
+  display: inline;
+}
+#playerHeader {
+  display: block;
+  width: 100%;
+}
+#status {
+  position:relative;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  width: 25px;
+  height: 25px;
+}
 .player {
+  margin: 0;
+  padding: 0;
   border-bottom: 2px solid black;
   height: 100px;
-  width: 90%;
-  display: inline-block;
+  display: block;
 }
-.player > .pile {
-  top: 30px;
-  right: 30%;
-  float: left;
-}
-#board > #playerName {
-  float: left;
-  margin: 1px;
-}
-#board > .pile {
-  top: 30px;
-  right: 30%;
-  float: left;
-}
+
+
+
 #playerResources {
   margin-left: 10%;
   margin-right: 10%;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
 }
 #gameBtns {
   height:6%;
-  float: bottom;
   margin-bottom: 20px;
   text-align: center;
+  width: 95%;
 }
-#hitBtn {
-  margin-right: 10%;
-  width: 40%;
-}
-#stayBtn {
-  margin-left: 10%;
-  width: 40%;
+#gameBtns > a > button {
+  width: 45%;
+  margin: 2.5%;
+  text-align: center;
 }
 #personal {
-  margin-left: 25%;
-  margin-bottom: 25%;
+  margin:auto;
   text-align: center;
   display: inline-block;
   float: top;
 }
 .pile {
-  padding:5px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  float: left;
+  padding:0px;
+  margin: 5px;
+  display: block;
+
+}
+#personal > .pile {
+  right: 5px;
 }
 .card {
   border-top: 2px inset #0275d8;
   border-left: 2px inset #0275d8;
-  margin-right: -7.5%;
+  margin-right: -10px;
   display: inline-block;
   width: 35px;
 }

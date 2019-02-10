@@ -48,17 +48,17 @@
           if ($row['username'] == $_SESSION['username']) {
             continue;
           } else {
-            echo "<div class='container-fluid player'><label class='container-fluid' id='playerName'>";
+            echo "<div class='container-fluid player'><div id='playerHeader'><div id='statusDiv' class='container-fluid'><label class='container-fluid playerName'>";
             echo $row['username'];
             echo "</label><div class='container-fluid' id='status'>";
             if ($row['ready'] == TRUE) {
               echo "<image class='icon' src='CardCropped/stayed.png' height='20px'>";
             }
-            echo "</div><div class='container-fluid' id='playerInfo'><div class='container-fluid' id='coinCount'>Coins: ";
+            echo "</div></div><div class='container-fluid' id='playerInfo'><div class='container-fluid' id='coinCount'>Coins: ";
             echo $row['coins'];
             echo "</div><div class='container-fluid' id='bet'>Bet: ";
             echo $row['bet'];
-            echo "</div></div><div class='container pile pile3'>";
+            echo "</div></div></div><div class='container pile pile3'>";
             $tableName = $row['ID'] . 'hand';
             $result2 = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
             while ($row = mysqli_fetch_array($result2)) {
@@ -69,7 +69,7 @@
         }
       ?>
     <div class="container-fluid" id="board">
-      <label class="container-fluid" id="playerName">
+      <label class="container-fluid playerName">
         Board/Dealer
       </label>
         <div class="container pile pile2">
@@ -91,7 +91,23 @@
       </div>
     </div>
     <div class="container-fluid fixed-bottom" id="playerResources">
-      <div class="container-fluid fixed-bottom" id="gameBtns">
+      <div class="container" id="personal">
+        <div class="container" id="funds"><?php
+        $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
+        $row = mysqli_fetch_array($result);
+        echo $row['coins'];
+        ?> coins</div>
+        <div class="container pile pile2">
+          <?php
+          $tableName = $playerID . "hand";
+          $result = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+          }
+          ?>
+        </image></div>
+      </div>
+      <div class="container-fluid" id="gameBtns">
         <?php
           $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
           $row = mysqli_fetch_array($result);
@@ -102,25 +118,9 @@
           if ($row['ready'] == FALSE && $row['nextAction'] == 'resetCardsAndGame') {
             echo "<a href='helpers/ready.php'><button type='button' class='btn btn-primary' id='nextBtn'>Next Hand</button></a>";
           }
+          $conn->close();
         ?>
 
-      </div>
-      <div class="container" id="personal">
-          <div class="container" id="funds"><?php
-                                              $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
-                                              $row = mysqli_fetch_array($result);
-                                              echo $row['coins'];
-                                                ?> coins</div>
-          <div class="container pile pile2">
-            <?php
-            $tableName = $playerID . "hand";
-            $result = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
-            while ($row = mysqli_fetch_array($result)) {
-              echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
-            }
-            $conn->close();
-          ?>
-        </image></div>
       </div>
     </div>
 </body>
