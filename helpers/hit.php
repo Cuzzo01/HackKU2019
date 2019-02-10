@@ -10,10 +10,10 @@
   include 'deal.php';
   $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
   $row = mysqli_fetch_array($result);
-  if ($row['nextAction'] != 'userplay') {
+  if ($row['nextAction'] != 'userPlay') {
     header("Location: ../game.php");
   } else {
-    deal($conn, $row['ID'], 1);
+]    deal($conn, $row['ID'], 1);
     if (getHandValue($conn, $row['ID']) >= 21) {
       header("Location: stay.php");
     } else {

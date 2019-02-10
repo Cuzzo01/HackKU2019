@@ -16,7 +16,7 @@
     if ($row['nextAction'] == 'bet') {
       header("Location: bet.php");
     }
-    if ($row['nextAction'] == 'userPlays') {
+    if ($row['nextAction'] == 'userPlay') {
 
     }
   }
@@ -27,7 +27,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta http-equiv="refresh" content="5" > -->
+    <meta http-equiv="refresh" content="5" >
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -37,7 +37,7 @@
 </head>
 <body>
     <div class="container-fluid" id="header">
-        <h3 id="name">Name</h3>
+        <h3 id="name"><?php echo $username ?></h3>
         <button type="button" class="btn btn-primary" id="menu">Menu</button>
     </div>
     <div class="container-fluid" id="otherPlayers">
@@ -99,9 +99,12 @@
         <?php
           $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
           $row = mysqli_fetch_array($result);
-          if ($row['ready'] == FALSE && $row['nextAction'] == 'userplay') {
+          if ($row['ready'] == FALSE && $row['nextAction'] == 'userPlay') {
             echo "<a href='helpers/hit.php'><button type='button' class='btn btn-primary' id='hitBtn'>Hit</button></a>";
             echo "<a href='helpers/stay.php'><button type='button' class='btn btn-primary' id='stayBtn'>Stay</button></a>";
+          }
+          if ($row['ready'] == FALSE && $row['nextAction'] == 'resetCardsAndGame') {
+            echo "<a href='helpers/ready.php'><button type='button' class='btn btn-primary' id='nextBtn'>Next Hand</button></a>";
           }
         ?>
 

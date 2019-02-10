@@ -8,9 +8,10 @@
   $conn->select_db("game_$gameCode");
   $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
   $row = mysqli_fetch_array($result);
-  if ($row['nextAction'] != 'userplay') {
+  if ($row['nextAction'] != 'userPlay') {
     header("Location: ../game.php");
   } else {
+    mysqli_query($conn, "UPDATE users SET nextAction = 'dealerPlays' WHERE username = '$username';") or die(mysqli_error($conn));
     $result = mysqli_query($conn, "UPDATE users SET ready = TRUE WHERE username = '$username';") or die(mysqli_error($conn));
     header("Location: ../game.php");
   }
