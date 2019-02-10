@@ -20,10 +20,8 @@
     $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$newName'");
     $count = mysqli_num_rows($result);
     if ($count != 0) {
-      echo "conflict found";
       $numToAdd ++;
     } else {
-      echo "no conlict";
       break;
     }
   }
