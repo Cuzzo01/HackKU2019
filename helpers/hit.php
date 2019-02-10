@@ -11,13 +11,14 @@
   $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'") or die(mysqli_error($conn));
   $row = mysqli_fetch_array($result);
   if ($row['nextAction'] != 'userPlay') {
-    header("Location: ../game.php");
+    header("Location: ../game.php?reload=true");
   } else {
     deal($conn, $row['ID'], 1);
     if (getHandValue($conn, $row['ID']) >= 21) {
       header("Location: stay.php");
     } else {
-      header("Location: ../game.php");
+      header("Location: ../game.php?reload=true");
     }
   }
+
 ?>

@@ -52,8 +52,6 @@ function possibleBet(){
   let amount = document.getElementById('betInput').value;
   let funds = document.getElementById('coins');
   let form = document.getElementById('betInfo');
-  console.log(amount);
-  console.log(funds.textContent );
   if(amount <= funds){
     form.method = 'post';
     form.action = '../helpers/setBet.php';

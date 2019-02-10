@@ -39,11 +39,11 @@
       mysqli_query($conn, "UPDATE users SET ready = FALSE") or die(mysqli_error($conn));
       mysqli_query($conn, "UPDATE users SET nextAction = 'resetCardsAndGame'") or die(mysqli_error($conn));
     } else if ($row['value'] == 'resetCardsAndGame') {
+      mysqli_query($conn, "UPDATE users SET ready = FALSE") or die(mysqli_error($conn));
       mysqli_query($conn, "UPDATE settings SET value = 'userPlay' WHERE setting = 'nextGameStep'") or die(mysqli_error($conn));
       resetDeck($conn);
-      mysqli_query($conn, "UPDATE users SET ready = FALSE") or die(mysqli_error($conn));
       mysqli_query($conn, "UPDATE users SET nextAction = 'bet'") or die(mysqli_error($conn));
-      header("Location: bet.php");
+      //header("Location: bet.php");
     }
   }
 ?>
