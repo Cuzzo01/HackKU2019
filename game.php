@@ -50,7 +50,11 @@
           } else {
             echo "<div class='container-fluid player'><label class='container-fluid' id='playerName'>";
             echo $row['username'];
+<<<<<<< HEAD
             echo "</label><div class="container-fluid" id="status"></div><div class="container-fluid" id="playerInfo"><div class="container-fluid" id="coinCount">Coins:</div><div class="container-fluid" id="bet">Bet:</div></div><div class='container pile pile3'>";
+=======
+            echo "</label><div class='container pile pile3'>";
+>>>>>>> f165f79b66f4ac44a64bd0b336aa91616d8432b1
             $tableName = $row['ID'] . 'hand';
             $result2 = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
             while ($row = mysqli_fetch_array($result2)) {

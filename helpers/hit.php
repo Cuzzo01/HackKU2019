@@ -13,7 +13,7 @@
   if ($row['nextAction'] != 'userPlay') {
     header("Location: ../game.php");
   } else {
-]    deal($conn, $row['ID'], 1);
+    deal($conn, $row['ID'], 1);
     if (getHandValue($conn, $row['ID']) >= 21) {
       header("Location: stay.php");
     } else {

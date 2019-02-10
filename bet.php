@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="../css/bet.css">
 
     <script type="text/javascript" src="../js/script.js"></script>
-
+    <script type="text/javascript" src="../js/webSocket.js"></script>
     <title>Card Game</title>
 </head>
-<body>
+<body onload="sendSync()">
   <div class="container-fluid" id="header">
       CardSimulator
   </div>
