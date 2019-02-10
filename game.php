@@ -27,7 +27,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="refresh" content="5" >
+    <!--<meta http-equiv="refresh" content="5" >-->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -45,6 +45,11 @@
         <label class="container-fluid" id="playerName">
           Player1
         </label>
+        <div class="container-fluid" id="status"></div>
+        <div class="container-fluid" id="playerInfo">
+          <div class="container-fluid" id="coinCount">Coins:</div>
+          <div class="container-fluid" id="bet">Bet:</div>
+        </div>
         <div class="container pile pile3">
         <?php
           $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
