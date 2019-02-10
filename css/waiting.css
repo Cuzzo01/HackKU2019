@@ -15,6 +15,7 @@ body {
 }
 #waitingMsg {
   font-size: xx-Large;
+  text-align: center;
   margin-top: 30%;
   margin-left: 5%;
   margin-right: 5%;
