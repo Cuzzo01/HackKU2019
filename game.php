@@ -41,16 +41,58 @@
         <button type="button" class="btn btn-primary" id="menu">Menu</button>
     </div>
     <div class="container-fluid" id="otherPlayers">
-
-    </div>
-    <div class="container-fluid" id="board">
-        <div class="container pile">
+      <div class="container-fluid player">
+        <label class="container-fluid" id="playerName">
+          Player1
+        </label>
+        <div class="container pile pile3">
         <?php
           $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
           while ($row = mysqli_fetch_array($result)) {
             echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
           }
         ?>
+        </div>
+      </div>
+      <div class="container-fluid player">
+        <label class="container-fluid" id="playerName">
+          Player2
+        </label>
+        <div class="container pile pile3">
+        <?php
+          $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+          }
+        ?>
+        </div>
+      </div>
+      <div class="container-fluid player">
+        <label class="container-fluid" id="playerName">
+          Player3
+        </label>
+        <div class="container pile pile3">
+        <?php
+          $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+          }
+        ?>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" id="board">
+      <label class="container-fluid" id="playerName">
+        Board/Dealer
+      </label>
+        <div class="container pile pile2">
+        <?php
+          $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+          }
+        ?>
+      </div>
     </div>
     <div class="container-fluid fixed-bottom" id="playerResources">
       <div class="container-fluid fixed-bottom" id="gameBtns">
@@ -70,14 +112,13 @@
                                               $row = mysqli_fetch_array($result);
                                               echo $row['coins'];
                                                 ?> coins</div>
-          <div class="container pile">
+          <div class="container pile pile2">
             <?php
             $tableName = $playerID . "hand";
             $result = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
             while ($row = mysqli_fetch_array($result)) {
               echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
             }
-            echo getHandValue($conn, $playerID);
             $conn->close();
           ?>
         </image></div>

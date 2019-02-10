@@ -19,7 +19,7 @@
       CardSimulator
   </div>
   <div class="container-fluid" id="waitingMsg">
-    Waiting for players to place their bets...
+    Waiting for other players...
     <div class="sk-folding-cube">
     <div class="sk-cube1 sk-cube"></div>
     <div class="sk-cube2 sk-cube"></div>

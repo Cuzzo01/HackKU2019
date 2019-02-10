@@ -49,8 +49,17 @@
     </table>
   </div>
   <div class = "container-fluid" id="waitMsgDiv">
-    <div class = "container-fluid" id="msg">Waiting for other players..</div>
-    <div class="loader"></div>
+    <div class = "container-fluid" id="msg">Waiting for other players..
+      <div class = "container-fluid" id="loaderBox">
+        <div class="sk-folding-cube">
+          <div class="sk-cube1 sk-cube"></div>
+          <div class="sk-cube2 sk-cube"></div>
+          <div class="sk-cube4 sk-cube"></div>
+          <div class="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+  </div>
+</div>
   </div>
   <div class = "container-fluid" id = "gameStart">
     <?php
