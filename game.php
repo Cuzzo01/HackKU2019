@@ -27,7 +27,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -52,7 +52,15 @@
           } else {
             echo "<div class='container-fluid player'><label class='container-fluid' id='playerName'>";
             echo $row['username'];
-            echo "</label><div class='container pile pile3'>";
+            echo "</label><div class='container-fluid' id='status'>";
+            if ($row['ready'] == TRUE) {
+              echo "<image class='icon' src='CardCropped/stayed.png' height='20px'>";
+            }
+            echo "</div><div class='container-fluid' id='playerInfo'><div class='container-fluid' id='coinCount'>Coins: ";
+            echo $row['coins'];
+            echo "</div><div class='container-fluid' id='bet'>Bet: ";
+            echo $row['bet'];
+            echo "</div></div><div class='container pile pile3'>";
             $tableName = $row['ID'] . 'hand';
             $result2 = mysqli_query($conn, "SELECT * FROM $tableName") or die(mysqli_error($conn));
             while ($row = mysqli_fetch_array($result2)) {
@@ -68,9 +76,18 @@
       </label>
         <div class="container pile pile2">
         <?php
+          $result = mysqli_query($conn, "SELECT * FROM settings WHERE setting = 'nextGameStep'") or die(mysqli_error($conn));
+          $row = mysqli_fetch_array($result);
+          $hideCard = !($row['value'] == 'revealResults' || $row['value'] == 'resetCardsAndGame');
           $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
+          $first = TRUE;
           while ($row = mysqli_fetch_array($result)) {
-            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+            if ($first && $hideCard) {
+              $first = FALSE;
+              echo "<image class='card' src='../CardCropped/hidden.png'>";
+            } else {
+              echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
+            }
           }
         ?>
       </div>
