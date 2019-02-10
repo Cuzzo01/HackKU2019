@@ -23,7 +23,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../css/lobby.css">
-    <script type="text/javascript" src="../js/lobbySocket.js"></script>
+    <script type="text/javascript" src="../js/webSocket.js"></script>
+    <script type="text/javascript">
+      console.log(document.cookie);
+    </script>
     <title>Card Game</title>
 </head>
 <body>

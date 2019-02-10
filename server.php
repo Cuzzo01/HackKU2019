@@ -14,7 +14,7 @@ socket_listen($socket);
 
 //create & add listning socket to the list
 $clients = array($socket);
-
+$users = array();
 //start endless loop, so that our script doesn't stop
 while (true) {
 	//manage multiple connections
@@ -43,15 +43,31 @@ while (true) {
 		while(socket_recv($changed_socket, $buf, 1024, 0) >= 1)
 		{
 			$received_text = unmask($buf); //unmask data
-
 			$tst_msg = json_decode($received_text, true); //json decode
+			$user_type = $tst_msg['type'];
 			$user_name = $tst_msg['name']; //sender name
 			$user_message = $tst_msg['message']; //message text
-
-			if($user_message == 'reload'){
-				print_R($user_message);
-				$response_text = mask(json_encode(array('type'=>'message', 'message'=>'reload')));
-				send_message($response_text); //send data
+			if($tst_msg != NULL){
+				if(array_key_exists('page', $tst_msg)){
+					$user_page = $tst_msg['page'];
+				}
+				if($user_type == 'init'){
+					if(!array_key_exists($user_message,$users)){
+						$users[$user_message] = array();
+					}
+					if(!array_key_exists($user_name,$users[$user_message])){
+						$response_text = mask(json_encode(array('type'=>'message', 'message'=>'reload')));
+						send_message($response_text, $user_name,$user_message);
+					}
+					$users[$user_message][$user_name] = $changed_socket;
+				}
+				elseif($user_type == 'sync') {
+					sync($user_name,$user_message,$user_page);
+				}
+				elseif($user_type == 'reload'){
+					$response_text = mask(json_encode(array('type'=>'message', 'message'=>'reload')));
+					send_message($response_text, $user_name,$user_message); //send data
+				}
 			}
 
 			//prepare data to be sent to client
@@ -63,7 +79,6 @@ while (true) {
 		if ($buf === false) { // check disconnected client
 			// remove client for $clients array
 			$found_socket = array_search($changed_socket, $clients);
-			socket_getpeername($changed_socket, $ip);
 			unset($clients[$found_socket]);
 		}
 	}
@@ -71,12 +86,26 @@ while (true) {
 
 // close the listening socket
 socket_close($socket);
-function send_message($msg)
+function sync($username,$lobby,$page){
+	global $clients;
+	global $users;
+	$msg = mask(json_encode(array('type'=>'message', 'message'=>'sync', 'page'=>$page)));
+	foreach($users[$lobby] as $name => $changed_socket)
+	{
+		if($name != $username){
+			@socket_write($changed_socket,$msg,strlen($msg));
+		}
+	}
+}
+function send_message($msg, $username,$lobby)
 {
 	global $clients;
-	foreach($clients as $changed_socket)
+	global $users;
+	foreach($users[$lobby] as $name => $changed_socket)
 	{
-		@socket_write($changed_socket,$msg,strlen($msg));
+		if($name != $username){
+			@socket_write($changed_socket,$msg,strlen($msg));
+		}
 	}
 	return true;
 }

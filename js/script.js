@@ -1,9 +1,3 @@
-let url = "ws://localhost:9000/server.php";
-let ws = new WebSocket(url);
-ws.onmessage = function(e){
-  let msg = JSON.parse(e.data);
-
-}
 function validateJoinInfo(){
   codeInput = document.getElementById('codeInput').value;
   console.log(codeInput);
@@ -14,15 +8,12 @@ function validateJoinInfo(){
       let form = document.getElementById('loginData');
       let gameCodeInput = document.getElementById('codeInput');
       gameCodeInput.disabled = false;
-      gameCodeInput.value = gameCodeInput.value.toUpperCase()
+      let gameCode = gameCodeInput.value.toUpperCase();
+      document.cookie = 'name=' + nameInput;
+      document.cookie = 'lobby=' + gameCode;
       form.method = 'post';
       form.action = '../helpers/joinLobby.php';
-      let msg = {
-        name: nameInput,
-        message: "reload"
-      };
       form.submit();
-      ws.send(JSON.stringify(msg))
       redirect('../helpers/joinLobby.php', 'POST');
     }
     else{
@@ -33,9 +24,7 @@ function validateJoinInfo(){
     error('The lobby string you entered is greater than 15 characters or empty, please try again.')
   }
 }
-function sendMsg(){
 
-}
 function readVariables(){
     let query = window.location.search.substring(1);
     if(query.length > 0){
