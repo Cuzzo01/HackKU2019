@@ -54,32 +54,6 @@
         ?>
         </div>
       </div>
-      <div class="container-fluid player">
-        <label class="container-fluid" id="playerName">
-          Player2
-        </label>
-        <div class="container pile pile3">
-        <?php
-          $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
-          while ($row = mysqli_fetch_array($result)) {
-            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
-          }
-        ?>
-        </div>
-      </div>
-      <div class="container-fluid player">
-        <label class="container-fluid" id="playerName">
-          Player3
-        </label>
-        <div class="container pile pile3">
-        <?php
-          $result = mysqli_query($conn, "SELECT * FROM dealerHand") or die(mysqli_error($conn));
-          while ($row = mysqli_fetch_array($result)) {
-            echo "<image class='card' src='../CardCropped/" . strtolower($row['card']) . ".png'>";
-          }
-        ?>
-        </div>
-      </div>
     </div>
     <div class="container-fluid" id="board">
       <label class="container-fluid" id="playerName">
