@@ -26,7 +26,7 @@ ws.onmessage = function(e){
   let msg = JSON.parse(e.data);
   switch(msg.message) {
     case 'reload':
-      location.reload();
+      window.location = window.location.href.split("?")[0];
       break;
     case 'sync':
       if(window.location.pathname.split("/").pop() != msg.page){
@@ -35,7 +35,24 @@ ws.onmessage = function(e){
       break;
   }
 }
+function sendReload(){
+  let msg = {
+    type: 'reload',
+    name: name,
+    message: lobby
+  };
+  setTimeout( function() {
+    ws.send(JSON.stringify(msg));
+    window.location = window.location.href.split("?")[0];
+  }, 500);
+
+}
 function sendSync(){
+  if(window.location.href.split("?")[1]=="reload=true"){
+    sendReload();
+    return;
+  }
+  console.log('Sent sync' + window.location.pathname.split("/").pop());
   let msg = {
     type: 'sync',
     name: name,
