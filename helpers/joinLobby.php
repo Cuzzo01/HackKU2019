@@ -1,14 +1,14 @@
 <?php
   include 'mysqlLogin.php';
 
-  $gameCode = $_POST['gameCode'];
-  $username = $_POST['username'];
+  $gameCode = strtoupper($_POST['gameCode']);
+  $username = strtoupper($_POST['username']);
 
   $conn->select_db("settings");
   $result = mysqli_query($conn, "SELECT * FROM gameCodes WHERE code = '$gameCode'");
   $count = mysqli_num_rows($result);
   if ($count == 0) {
-    header("Location: ../join.php?err=1");
+    header("Location: ../joinMenu.php?err=1");
   }
 
   $conn->select_db("game_$gameCode");
